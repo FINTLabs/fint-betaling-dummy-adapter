@@ -4,6 +4,19 @@ spring:
       resourceserver:
         jwt:
           issuer-uri: https://idp.felleskomponent.no/nidp/oauth/nam
+fint:
+  oauth:
+    enabled: true
+    access-token-uri: https://idp.felleskomponent.no/nidp/oauth/nam/token
+  adapter:
+    reject-unknown-events: false
+    endpoints:
+      sse: /sse/%s
+      status: /status
+      response: /response
+      providers:
+        faktura: https://play-with-fint.felleskomponent.no/okonomi/faktura/provider
+    organizations: pwf.no
 
 server:
   error:
