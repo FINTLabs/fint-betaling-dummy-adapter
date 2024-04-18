@@ -1,7 +1,5 @@
-package no.fintlabs.provider.service;
+package no.fintlabs.provider.okonomi.services;
 
-import no.fint.model.okonomi.faktura.Faktura;
-import no.fint.model.resource.FintLinks;
 import no.fint.model.resource.okonomi.faktura.FakturaResource;
 import org.springframework.stereotype.Service;
 

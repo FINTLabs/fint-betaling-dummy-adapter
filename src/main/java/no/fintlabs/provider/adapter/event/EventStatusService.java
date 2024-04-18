@@ -5,7 +5,7 @@ import no.fint.event.model.DefaultActions;
 import no.fint.event.model.Event;
 import no.fint.event.model.HeaderConstants;
 import no.fint.event.model.Status;
-import no.fintlabs.provider.SupportedActions;
+import no.fintlabs.provider.adapter.SupportedActions;
 import no.fintlabs.provider.adapter.FintAdapterEndpoints;
 import no.fintlabs.provider.adapter.FintAdapterProps;
 import org.springframework.beans.factory.annotation.Qualifier;

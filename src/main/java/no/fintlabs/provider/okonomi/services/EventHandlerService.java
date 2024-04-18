@@ -1,4 +1,4 @@
-package no.fintlabs.provider.service;
+package no.fintlabs.provider.okonomi.services;
 
 import com.google.common.collect.ImmutableMultimap;
 import lombok.Getter;
@@ -9,9 +9,10 @@ import no.fint.event.model.Status;
 import no.fint.event.model.health.Health;
 import no.fint.event.model.health.HealthStatus;
 import no.fint.model.resource.FintLinks;
-import no.fintlabs.provider.SupportedActions;
+import no.fintlabs.provider.adapter.SupportedActions;
 import no.fintlabs.provider.adapter.event.EventResponseService;
 import no.fintlabs.provider.adapter.event.EventStatusService;
+import no.fintlabs.provider.adapter.Handler;
 import org.apache.commons.lang3.exception.ExceptionUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

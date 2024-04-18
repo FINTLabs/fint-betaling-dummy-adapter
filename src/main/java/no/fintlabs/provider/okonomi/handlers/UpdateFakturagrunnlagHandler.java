@@ -1,4 +1,4 @@
-package no.fintlabs.provider.service.handlers;
+package no.fintlabs.provider.okonomi.handlers;
 
 import lombok.extern.slf4j.Slf4j;
 import no.fint.event.model.Event;
@@ -6,8 +6,8 @@ import no.fint.event.model.ResponseStatus;
 import no.fint.model.okonomi.faktura.FakturaActions;
 import no.fint.model.resource.FintLinks;
 import no.fint.model.resource.okonomi.faktura.FakturagrunnlagResource;
-import no.fintlabs.provider.service.FakturaGrunnlagService;
-import no.fintlabs.provider.service.Handler;
+import no.fintlabs.provider.adapter.Handler;
+import no.fintlabs.provider.okonomi.services.FakturaGrunnlagService;
 import org.springframework.stereotype.Component;
 
 import java.util.Collections;

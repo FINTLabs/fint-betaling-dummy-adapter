@@ -10,7 +10,7 @@ import no.fint.sse.FintSseConfig;
 import no.fint.sse.oauth.TokenService;
 import no.fintlabs.provider.adapter.FintAdapterEndpoints;
 import no.fintlabs.provider.adapter.FintAdapterProps;
-import no.fintlabs.provider.service.EventHandlerService;
+import no.fintlabs.provider.okonomi.services.EventHandlerService;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;
 

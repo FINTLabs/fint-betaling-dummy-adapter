@@ -1,4 +1,4 @@
-package no.fintlabs.provider.service;
+package no.fintlabs.provider.adapter;
 
 import no.fint.event.model.Event;
 import no.fint.model.resource.FintLinks;
@@ -6,7 +6,6 @@ import no.fint.model.resource.FintLinks;
 import java.util.Collections;
 import java.util.List;
 import java.util.Set;
-import java.util.function.Consumer;
 
 public interface Handler<T extends FintLinks> {
 

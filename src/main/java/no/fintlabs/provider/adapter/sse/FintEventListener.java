@@ -3,7 +3,7 @@ package no.fintlabs.provider.adapter.sse;
 import lombok.extern.slf4j.Slf4j;
 import no.fint.event.model.Event;
 import no.fint.sse.AbstractEventListener;
-import no.fintlabs.provider.service.EventHandlerService;
+import no.fintlabs.provider.okonomi.services.EventHandlerService;
 import org.glassfish.jersey.media.sse.InboundEvent;
 
 /**

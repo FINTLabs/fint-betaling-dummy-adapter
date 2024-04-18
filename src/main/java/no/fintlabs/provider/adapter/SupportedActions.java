@@ -1,6 +1,5 @@
-package no.fintlabs.provider;
+package no.fintlabs.provider.adapter;
 
-import no.fintlabs.provider.adapter.AbstractSupportedActions;
 import org.springframework.stereotype.Component;
 
 @Component
