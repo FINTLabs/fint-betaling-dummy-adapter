@@ -26,7 +26,7 @@ public class UpdateFakturagrunnlagHandler implements Handler<FakturagrunnlagReso
 
     @Override
     public void accept(Event event, List<FakturagrunnlagResource> input) {
-        log.info("Faktura accepted");
+        log.info("Fakturagrunnlag recieved: {}", event.getCorrId());
         event.setResponseStatus(ResponseStatus.ACCEPTED);
         event.setData(fakturaGrunnlagService.add(input));
     }

@@ -53,6 +53,13 @@ public class EventStatusService {
             return false;
         }
 
+        // Wait some time because provider returned: 410 : "Unknown Event object from adapter"
+        try {
+            Thread.sleep(1000);
+        } catch (InterruptedException e) {
+            log.warn("Thread sleep failed");
+        }
+
         log.info("{}: Posting status for {} {} ...", component, event.getAction(), event.getCorrId());
         return postStatus(component, event) && event.getStatus() == Status.ADAPTER_ACCEPTED;
     }
