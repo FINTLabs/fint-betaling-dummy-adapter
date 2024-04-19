@@ -7,11 +7,13 @@ import no.fint.model.okonomi.faktura.FakturaActions;
 import no.fintlabs.provider.adapter.Handler;
 import no.fintlabs.provider.okonomi.services.FakturaGrunnlagService;
 import org.apache.commons.lang3.StringUtils;
+import org.springframework.stereotype.Component;
 
 import java.util.Collections;
 import java.util.Set;
 
 @Slf4j
+@Component
 public class GetFakturagrunnlagHandler implements Handler {
 
     private final FakturaGrunnlagService fakturaGrunnlagService;

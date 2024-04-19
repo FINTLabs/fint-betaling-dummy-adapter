@@ -54,6 +54,8 @@ public class EventHandlerService {
         } else {
             if (eventStatusService.verifyEvent(component, event)) {
                 handleResponse(component, event.getAction(), new Event<>(event));
+            } else {
+                log.warn("{}: Event {} for {} - {} is not valid", component, event.getAction(), event.getOrgId(), event.getCorrId());
             }
         }
     }
