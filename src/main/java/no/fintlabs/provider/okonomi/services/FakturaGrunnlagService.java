@@ -10,13 +10,7 @@ import java.util.stream.Collectors;
 @Service
 public class FakturaGrunnlagService {
 
-    public List<FakturagrunnlagResource> add(List<FintLinks> data) {
-        return data.stream().map(this::convertToResource).collect(Collectors.toList());
+    public List<FakturagrunnlagResource> add(List<FakturagrunnlagResource> data) {
+        return data.stream().collect(Collectors.toList());
     }
-
-    private FakturagrunnlagResource convertToResource(FintLinks object) {
-        FakturagrunnlagResource resource = new FakturagrunnlagResource();
-        return resource;
-    }
-
 }
