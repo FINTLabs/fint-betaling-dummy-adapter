@@ -13,7 +13,7 @@ import java.util.List;
 import java.util.Set;
 
 @Slf4j
-public class GetFakturaHandler implements Handler<FakturaResource> {
+public class GetFakturaHandler implements Handler {
 
     FakturaService fakturaService;
 
@@ -22,14 +22,9 @@ public class GetFakturaHandler implements Handler<FakturaResource> {
     }
 
     @Override
-    public void accept(Event event, List<FakturaResource> input) {
+    public void accept(Event event) {
         log.info("Get Faktura");
         event.setData(fakturaService.add(event.getData()));
-    }
-
-    @Override
-    public FakturaResource cast(FintLinks input) {
-        return (FakturaResource) input;
     }
 
     @Override

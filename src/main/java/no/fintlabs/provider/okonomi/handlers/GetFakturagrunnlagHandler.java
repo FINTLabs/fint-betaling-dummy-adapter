@@ -12,17 +12,12 @@ import java.util.List;
 import java.util.Set;
 
 @Slf4j
-public class GetFakturagrunnlagHandler implements Handler<FakturagrunnlagResource> {
+public class GetFakturagrunnlagHandler implements Handler {
 
     @Override
-    public void accept(Event event, List<FakturagrunnlagResource> input) {
+    public void accept(Event event) {
         log.info("Fakturagrunnlag accepted");
 
-    }
-
-    @Override
-    public FakturagrunnlagResource cast(FintLinks input) {
-        return (FakturagrunnlagResource) input;
     }
 
     @Override

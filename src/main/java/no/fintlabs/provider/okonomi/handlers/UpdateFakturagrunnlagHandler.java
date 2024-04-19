@@ -16,7 +16,7 @@ import java.util.Set;
 
 @Slf4j
 @Component
-public class UpdateFakturagrunnlagHandler implements Handler<FakturagrunnlagResource> {
+public class UpdateFakturagrunnlagHandler implements Handler {
 
     FakturaGrunnlagService fakturaGrunnlagService;
 
@@ -25,15 +25,10 @@ public class UpdateFakturagrunnlagHandler implements Handler<FakturagrunnlagReso
     }
 
     @Override
-    public void accept(Event event, List<FakturagrunnlagResource> input) {
+    public void accept(Event event) {
         log.info("Fakturagrunnlag recieved: {}", event.getCorrId());
         event.setResponseStatus(ResponseStatus.ACCEPTED);
-        event.setData(fakturaGrunnlagService.add(input));
-    }
-
-    @Override
-    public FakturagrunnlagResource cast(FintLinks input) {
-        return (FakturagrunnlagResource) input;
+        //event.setData(fakturaGrunnlagService.add(input));
     }
 
     @Override

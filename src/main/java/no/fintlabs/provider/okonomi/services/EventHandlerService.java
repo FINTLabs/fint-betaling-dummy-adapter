@@ -39,10 +39,10 @@ public class EventHandlerService {
     private SupportedActions supportedActions;
 
     @Autowired
-    private Collection<Handler<? extends FintLinks>> handlers;
+    private Collection<Handler> handlers;
 
     @Getter
-    private ImmutableMultimap<String, Handler<? extends FintLinks>> actionsHandlerMap;
+    private ImmutableMultimap<String, Handler> actionsHandlerMap;
 
     public Set<String> getActions() {
         return actionsHandlerMap.keySet();
@@ -58,10 +58,10 @@ public class EventHandlerService {
         }
     }
 
-    private void handleResponse(String component, String action, Event<? extends FintLinks> response) {
+    private void handleResponse(String component, String action, Event response) {
         try {
             log.debug("EventHandlerService.handleReponse for " + action);
-            actionsHandlerMap.get(action).forEach(h -> h.castAndAccept(response));
+            actionsHandlerMap.get(action).forEach(h -> h.accept(response));
         } catch (Exception e) {
             log.error("Exception in handleResponse" + e.getMessage(), e);
             response.setResponseStatus(ResponseStatus.ERROR);
@@ -113,7 +113,7 @@ public class EventHandlerService {
      */
     @PostConstruct
     void init() {
-        ImmutableMultimap.Builder<String, Handler<? extends FintLinks>> builder = ImmutableMultimap.builder();
+        ImmutableMultimap.Builder<String, Handler> builder = ImmutableMultimap.builder();
         handlers.forEach(h -> h.actions().forEach(a -> {
             builder.put(a, h);
             supportedActions.add(a);
