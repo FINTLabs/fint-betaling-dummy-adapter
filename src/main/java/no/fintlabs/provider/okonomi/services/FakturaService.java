@@ -4,6 +4,8 @@ import no.fint.model.felles.kompleksedatatyper.Identifikator;
 import no.fint.model.resource.okonomi.faktura.FakturaResource;
 import org.springframework.stereotype.Service;
 
+import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -18,24 +20,35 @@ public class FakturaService {
         FakturaResource faktura = new FakturaResource();
         faktura.setFakturanummer(createIdentifikator(fakturanummer));
 
-        faktura.setBetalt(true);
-        faktura.setFakturert(true);
-        //faktura.setForfallsdato();
-        faktura.setKreditert(false);
-        faktura.setRestbelop(0L);
+        int lastDigit = Integer.parseInt(fakturanummer.substring(fakturanummer.length() - 1));
 
-        char lastChar = fakturanummer.charAt(fakturanummer.length() - 1);
+        switch (lastDigit) {
+            case 0:
+                Calendar calendar = Calendar.getInstance();
+                calendar.add(Calendar.DAY_OF_MONTH, 10);
+                Date dueDate = calendar.getTime();
 
-//        switch (lastChar) {
-//            case '0':
-//                faktura.setBetalt(true);
-//                faktura.setFakturert(true);
-//                faktura.setForfallsdato();
-//                faktura.setKreditert(true);
-//                faktura.setRestbelop(1000);
-//            default:
-//
-//        }
+                faktura.setBetalt(false);
+                faktura.setFakturert(true);
+                faktura.setForfallsdato(dueDate);
+                faktura.setKreditert(false);
+                faktura.setRestbelop(500L);
+                break;
+            case 1:
+                faktura.setBetalt(true);
+                faktura.setFakturert(true);
+                faktura.setKreditert(false);
+                faktura.setRestbelop(0L);
+                break;
+            case 2:
+                faktura.setBetalt(false);
+                faktura.setFakturert(true);
+                faktura.setKreditert(true);
+                faktura.setRestbelop(0L);
+                break;
+            default:
+
+        }
 
         return faktura;
     }

@@ -14,6 +14,7 @@ import org.springframework.stereotype.Component;
 import java.util.Collections;
 import java.util.List;
 import java.util.Set;
+import java.util.UUID;
 
 @Slf4j
 @Component
@@ -34,6 +35,25 @@ public class UpdateFakturagrunnlagHandler implements Handler {
 
         List<FakturagrunnlagResource> data = mapToResource(event.getData());
 
+        if (getLastDigit(data) == 7) {
+            event.setResponseStatus(ResponseStatus.ERROR);
+            event.setMessage("Feil i adapter (simulert feil)");
+            return;
+        }
+
+        if (getLastDigit(data) == 8) {
+            event.setResponseStatus(ResponseStatus.REJECTED);
+            event.setMessage("Invalid data (simulert feil)");
+            return;
+        }
+
+        if (getLastDigit(data) == 9) {
+            event.setResponseStatus(ResponseStatus.ACCEPTED);
+            event.setData(fakturaGrunnlagService.add(data));
+            event.setCorrId(UUID.randomUUID().toString());
+            return;
+        }
+
         event.setResponseStatus(ResponseStatus.ACCEPTED);
         event.setData(fakturaGrunnlagService.add(data));
     }
@@ -48,5 +68,13 @@ public class UpdateFakturagrunnlagHandler implements Handler {
                 fintLinks,
                 objectMapper.getTypeFactory().constructCollectionType(List.class, FakturagrunnlagResource.class)
         );
+    }
+
+    private int getLastDigit(List<FakturagrunnlagResource> input) {
+        if (input == null || input.isEmpty()) return -1;
+        if (input.size() > 1) return -1;
+
+        String ordrenummer = input.get(0).getOrdrenummer().getIdentifikatorverdi();
+        return Integer.parseInt(ordrenummer.substring(ordrenummer.length() - 1));
     }
 }

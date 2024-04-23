@@ -27,12 +27,18 @@ public class FakturaGrunnlagService {
 
     private void handleNewResource(FakturagrunnlagResource resource) {
 
+
+
         int ordrenummer = Integer.parseInt(resource.getOrdrenummer().getIdentifikatorverdi());
         int fakturanummer = ordrenummer - INITIAL_ORDER_NUMBER;
 
-        Link fakturaLink = new Link();
-        fakturaLink.setVerdi("${okonomi.faktura.faktura}/fakutranummer/" + fakturanummer);
-        resource.addFaktura(fakturaLink);
+        int lastNumber = ordrenummer % 10;
+
+        if (lastNumber < 3) {
+            Link fakturaLink = new Link();
+            fakturaLink.setVerdi("${okonomi.faktura.faktura}/fakutranummer/" + fakturanummer);
+            resource.addFaktura(fakturaLink);
+        }
     }
 
     public FakturagrunnlagResource get(String ordernummer) {
