@@ -1,0 +1,27 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: fint-okonomi-dummy-adapter
+spec:
+  replicas: 1
+  strategy:
+    type: Recreate
+  template:
+    spec:
+      restartPolicy: Always
+      containers:
+        - image: ghcr.io/fintlabs/fint-okonomi-dummy-adapter:sha-ee7b03d
+          name: fint-okonomi-dummy-adapter
+          resources:
+            limits:
+              memory: "512Mi"
+              cpu: "250m"
+            requests:
+              memory: "256Mi"
+              cpu: "100m"
+          ports:
+            - containerPort: 8080
+          envFrom:
+            - secretRef:
+                name: fint-okonomi-dummy-adapter
+
