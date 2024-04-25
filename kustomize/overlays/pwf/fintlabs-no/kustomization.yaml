@@ -3,8 +3,7 @@ kind: Kustomization
 namespace: fintlabs-no
 resources:
   - ../../../base
-patchesStrategicMerge:
-  - Onepassword.yaml
+  - onepassword.yaml
 commonLabels:
   app.kubernetes.io/name: fint-okonomi-dummy-adapter
   app.kubernetes.io/instance: fint-okonomi-dummy-adapter
