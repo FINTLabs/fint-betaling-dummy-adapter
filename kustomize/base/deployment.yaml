@@ -10,7 +10,7 @@ spec:
     spec:
       restartPolicy: Always
       containers:
-        - image: ghcr.io/fintlabs/fint-okonomi-dummy-adapter:sha-ee7b03d
+        - image: ghcr.io/fintlabs/fint-okonomi-dummy-adapter:sha-951c135
           name: fint-okonomi-dummy-adapter
           resources:
             limits:
