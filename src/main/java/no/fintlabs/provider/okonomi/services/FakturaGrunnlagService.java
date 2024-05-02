@@ -35,7 +35,7 @@ public class FakturaGrunnlagService {
 
         if (lastNumber < 3) {
             Link fakturaLink = new Link();
-            fakturaLink.setVerdi("${okonomi.faktura.faktura}/fakutranummer/" + fakturanummer);
+            fakturaLink.setVerdi("${okonomi.faktura.faktura}/fakturanummer/" + fakturanummer);
             resource.addFaktura(fakturaLink);
         }
     }
