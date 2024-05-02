@@ -27,8 +27,6 @@ public class FakturaGrunnlagService {
 
     private void handleNewResource(FakturagrunnlagResource resource) {
 
-
-
         int ordrenummer = Integer.parseInt(resource.getOrdrenummer().getIdentifikatorverdi());
         int fakturanummer = ordrenummer - INITIAL_ORDER_NUMBER;
 
@@ -42,6 +40,14 @@ public class FakturaGrunnlagService {
     }
 
     public FakturagrunnlagResource get(String ordernummer) {
-        return fakturagrunnlag.get(ordernummer);
+        FakturagrunnlagResource resource = fakturagrunnlag.get(ordernummer);
+        if (resource != null) {
+            return resource;
+        }
+
+        FakturagrunnlagResource newResource = new FakturagrunnlagResource();
+        handleNewResource(newResource);
+        fakturagrunnlag.put(ordernummer.toString(), newResource);
+        return newResource;
     }
 }
