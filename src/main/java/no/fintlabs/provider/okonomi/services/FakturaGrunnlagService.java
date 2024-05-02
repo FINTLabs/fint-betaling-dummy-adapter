@@ -1,5 +1,6 @@
 package no.fintlabs.provider.okonomi.services;
 
+import no.fint.model.felles.kompleksedatatyper.Identifikator;
 import no.fint.model.resource.Link;
 import no.fint.model.resource.okonomi.faktura.FakturagrunnlagResource;
 import no.fint.model.resource.okonomi.faktura.FakturagrunnlagResources;
@@ -46,6 +47,10 @@ public class FakturaGrunnlagService {
         }
 
         FakturagrunnlagResource newResource = new FakturagrunnlagResource();
+        Identifikator identifikator = new Identifikator();
+        identifikator.setIdentifikatorverdi(ordernummer);
+        newResource.setOrdrenummer(identifikator);
+
         handleNewResource(newResource);
         fakturagrunnlag.put(ordernummer.toString(), newResource);
         return newResource;
