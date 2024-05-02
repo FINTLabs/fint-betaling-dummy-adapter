@@ -24,7 +24,7 @@ public class GetFakturagrunnlagHandler implements Handler {
 
     @Override
     public void accept(Event response) {
-        log.info("Fakturagrunnlag accepted");
+        log.info("GET Fakturagrunnlag: {}", response.getQuery());
 
         if (!StringUtils.startsWith(response.getQuery(), "ordrenummer/")) {
             response.setResponseStatus(ResponseStatus.REJECTED);

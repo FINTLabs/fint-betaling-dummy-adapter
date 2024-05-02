@@ -24,9 +24,10 @@ public class GetFakturaHandler implements Handler {
 
     @Override
     public void accept(Event response) {
-        log.info("Get Faktura");
+        log.info("Get Faktura: {}", response.getQuery());
 
         if (!StringUtils.startsWith(response.getQuery(), "fakturanummer/")) {
+            log.warn("Reject invalid query: {}", response.getQuery());
             response.setResponseStatus(ResponseStatus.REJECTED);
             response.setMessage("Invalid query " + response.getQuery());
             return;
@@ -34,6 +35,7 @@ public class GetFakturaHandler implements Handler {
 
         response.addData(fakturaService.getFaktura(StringUtils.removeStart(response.getQuery(), "fakturanummer/")));
         response.setResponseStatus(ResponseStatus.ACCEPTED);
+        log.debug("Returning faktura: {}", response.getQuery());
     }
 
     @Override
